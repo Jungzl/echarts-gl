@@ -19,6 +19,7 @@
     "prepublish": "node scripts/build.js && babel src -d lib",
     "release": "npm run prepublish && npm run build"
   },
+  "files": ["dist", "lib", "index.js"],
   "main": "dist/echarts-gl.cjs",
   "module": "index.js",
   "exports": {
