@@ -28,8 +28,8 @@
  */
 
 import * as echarts from 'echarts/lib/echarts';
-import LayerGL from './core/LayerGL';
-import backwardCompat from './preprocessor/backwardCompat';
+import LayerGL from './core/LayerGL.js';
+import backwardCompat from './preprocessor/backwardCompat.js';
 
 function EChartsGL (zr) {
     this._layers = {};

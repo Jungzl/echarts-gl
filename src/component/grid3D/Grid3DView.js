@@ -1,17 +1,17 @@
 // TODO orthographic camera
 
 import * as echarts from 'echarts/lib/echarts';
-import {createTextStyle} from 'echarts/lib/label/labelStyle';
-import graphicGL from '../../util/graphicGL';
-import OrbitControl from '../../util/OrbitControl';
-import Lines3DGeometry from '../../util/geometry/Lines3D';
-import retrieve from '../../util/retrieve';
+import {createTextStyle} from 'echarts/lib/label/labelStyle.js';
+import graphicGL from '../../util/graphicGL.js';
+import OrbitControl from '../../util/OrbitControl.js';
+import Lines3DGeometry from '../../util/geometry/Lines3D.js';
+import retrieve from '../../util/retrieve.js';
 var firstNotNull = retrieve.firstNotNull;
-import ZRTextureAtlasSurface from '../../util/ZRTextureAtlasSurface';
-import SceneHelper from '../common/SceneHelper';
-import Grid3DFace from './Grid3DFace';
-import Grid3DAxis from './Grid3DAxis';
-import LabelsMesh from '../../util/mesh/LabelsMesh';
+import ZRTextureAtlasSurface from '../../util/ZRTextureAtlasSurface.js';
+import SceneHelper from '../common/SceneHelper.js';
+import Grid3DFace from './Grid3DFace.js';
+import Grid3DAxis from './Grid3DAxis.js';
+import LabelsMesh from '../../util/mesh/LabelsMesh.js';
 
 import lines3DGLSL from '../../util/shader/lines3D.glsl.js';
 graphicGL.Shader.import(lines3DGLSL);

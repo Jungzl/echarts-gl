@@ -1,12 +1,12 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import glmatrix from 'claygl/src/dep/glmatrix';
+import graphicGL from '../../util/graphicGL.js';
+import {dep} from 'claygl';
 
-import Lines3DGeometry from '../../util/geometry/Lines3D';
+import Lines3DGeometry from '../../util/geometry/Lines3D.js';
 import trail2GLSL from './shader/trail2.glsl.js';
-import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual';
+import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 
-var vec3 = glmatrix.vec3;
+var vec3 = dep.glmatrix.vec3;
 
 function sign(a) {
     return a > 0 ? 1 : -1;

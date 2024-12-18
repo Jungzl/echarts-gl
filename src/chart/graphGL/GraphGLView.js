@@ -1,20 +1,20 @@
 import * as echarts from 'echarts/lib/echarts';
-import {getLayoutRect} from 'echarts/lib/util/layout';
-import graphicGL from '../../util/graphicGL';
-import ViewGL from '../../core/ViewGL';
-import Lines2DGeometry from '../../util/geometry/Lines2D';
-import retrieve from '../../util/retrieve';
-import ForceAtlas2GPU from './ForceAtlas2GPU';
-import ForceAtlas2 from './ForceAtlas2';
-import requestAnimationFrame from 'zrender/lib/animation/requestAnimationFrame';
-import glmatrix from 'claygl/src/dep/glmatrix';
-import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual';
+import {getLayoutRect} from 'echarts/lib/util/layout.js';
+import graphicGL from '../../util/graphicGL.js';
+import ViewGL from '../../core/ViewGL.js';
+import Lines2DGeometry from '../../util/geometry/Lines2D.js';
+import retrieve from '../../util/retrieve.js';
+import ForceAtlas2GPU from './ForceAtlas2GPU.js';
+import ForceAtlas2 from './ForceAtlas2.js';
+import requestAnimationFrame from 'zrender/lib/animation/requestAnimationFrame.js';
+import {dep} from 'claygl';
+import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 
-var vec2 = glmatrix.vec2;
+var vec2 = dep.glmatrix.vec2;
 
-import Roam2DControl from '../../util/Roam2DControl';
+import Roam2DControl from '../../util/Roam2DControl.js';
 
-import PointsBuilder from '../common/PointsBuilder';
+import PointsBuilder from '../common/PointsBuilder.js';
 
 import lines2DGLSL from '../../util/shader/lines2D.glsl.js';
 graphicGL.Shader.import(lines2DGLSL);

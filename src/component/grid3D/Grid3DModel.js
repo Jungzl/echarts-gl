@@ -1,7 +1,7 @@
 import * as echarts from 'echarts/lib/echarts';
-import componentViewControlMixin from '../common/componentViewControlMixin';
-import componentPostEffectMixin from '../common/componentPostEffectMixin';
-import componentLightMixin from '../common/componentLightMixin';
+import componentViewControlMixin from '../common/componentViewControlMixin.js';
+import componentPostEffectMixin from '../common/componentPostEffectMixin.js';
+import componentLightMixin from '../common/componentLightMixin.js';
 
 var Grid3DModel = echarts.ComponentModel.extend({
 

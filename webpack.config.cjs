@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+/* jshint node: true */
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = (env, options) => {
@@ -16,7 +16,7 @@ module.exports = (env, options) => {
             libraryTarget: 'umd',
             library: ['echarts-gl'],
             path: __dirname + '/dist',
-            filename: options.mode === 'production' ? '[name].min.js' : '[name].js'
+            filename: options.mode === 'production' ? '[name].min.cjs' : '[name].cjs'
         },
         externals: {
             'echarts/lib/echarts': 'echarts'

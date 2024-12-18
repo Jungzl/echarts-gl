@@ -1,7 +1,7 @@
 import * as echarts from 'echarts/lib/echarts';
 
-import componentPostEffectMixin from '../common/componentPostEffectMixin';
-import componentLightMixin from '../common/componentLightMixin';
+import componentPostEffectMixin from '../common/componentPostEffectMixin.js';
+import componentLightMixin from '../common/componentLightMixin.js';
 
 var MAPTALKS_CAMERA_OPTION = ['zoom', 'center', 'pitch', 'bearing'];
 

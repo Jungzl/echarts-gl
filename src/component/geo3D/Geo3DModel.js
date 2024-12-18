@@ -1,9 +1,9 @@
 import * as echarts from 'echarts/lib/echarts';
-import componentViewControlMixin from '../common/componentViewControlMixin';
-import componentPostEffectMixin from '../common/componentPostEffectMixin';
-import componentLightMixin from '../common/componentLightMixin';
-import componentShadingMixin from '../common/componentShadingMixin';
-import geo3DModelMixin from '../../coord/geo3D/geo3DModelMixin';
+import componentViewControlMixin from '../common/componentViewControlMixin.js';
+import componentPostEffectMixin from '../common/componentPostEffectMixin.js';
+import componentLightMixin from '../common/componentLightMixin.js';
+import componentShadingMixin from '../common/componentShadingMixin.js';
+import geo3DModelMixin from '../../coord/geo3D/geo3DModelMixin.js';
 
 var Geo3DModel = echarts.ComponentModel.extend({
 

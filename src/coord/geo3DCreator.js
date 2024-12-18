@@ -1,8 +1,8 @@
-import Geo3D from './geo3D/Geo3D';
+import Geo3D from './geo3D/Geo3D.js';
 import * as echarts from 'echarts/lib/echarts';
-import {getLayoutRect} from 'echarts/lib/util/layout';
-import ViewGL from '../core/ViewGL';
-import retrieve from '../util/retrieve';
+import {getLayoutRect} from 'echarts/lib/util/layout.js';
+import ViewGL from '../core/ViewGL.js';
+import retrieve from '../util/retrieve.js';
 
 function resizeGeo3D(geo3DModel, api) {
     // Use left/top/width/height

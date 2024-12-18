@@ -1,11 +1,11 @@
 import * as echarts from 'echarts/lib/echarts';
 
-import graphicGL from '../../util/graphicGL';
-import OrbitControl from '../../util/OrbitControl';
-import SceneHelper from '../common/SceneHelper';
+import graphicGL from '../../util/graphicGL.js';
+import OrbitControl from '../../util/OrbitControl.js';
+import SceneHelper from '../common/SceneHelper.js';
 
-import sunCalc from '../../util/sunCalc';
-import retrieve from '../../util/retrieve';
+import sunCalc from '../../util/sunCalc.js';
+import retrieve from '../../util/retrieve.js';
 
 import utilShaderCode from 'claygl/src/shader/source/util.glsl.js';
 import atmosphereShaderCode from './atmosphere.glsl.js';

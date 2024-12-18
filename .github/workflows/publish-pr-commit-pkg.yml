@@ -1,0 +1,37 @@
+name: Publish PR Commit Pkg
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '!**'
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'Jungzl/echarts-gl' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts-jod
+          cache: npm
+
+      - name: Setup npm
+        uses: npm/action-setup@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm build
+
+      - name: Publish
+        run: pnpx pkg-pr-new publish

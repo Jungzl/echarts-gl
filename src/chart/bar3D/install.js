@@ -1,10 +1,10 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
 
-import registerBarLayout from './bar3DLayout';
-import Bar3DSeries from './Bar3DSeries';
-import Bar3DView from './Bar3DView';
+import registerBarLayout from './bar3DLayout.js';
+import Bar3DSeries from './Bar3DSeries.js';
+import Bar3DView from './Bar3DView.js';
 
 export function install(registers) {
     registers.registerChartView(Bar3DView);

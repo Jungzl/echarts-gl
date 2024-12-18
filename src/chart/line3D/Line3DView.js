@@ -1,16 +1,16 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import retrieve from '../../util/retrieve';
-import Lines3DGeometry from '../../util/geometry/Lines3D';
-import Matrix4 from 'claygl/src/math/Matrix4';
-import Vector3 from 'claygl/src/math/Vector3';
-import * as lineContain from 'zrender/lib/contain/line';
-import glmatrix from 'claygl/src/dep/glmatrix';
-import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual';
+import graphicGL from '../../util/graphicGL.js';
+import retrieve from '../../util/retrieve.js';
+import Lines3DGeometry from '../../util/geometry/Lines3D.js';
+import {Matrix4} from 'claygl';
+import {Vector3} from 'claygl';
+import * as lineContain from 'zrender/lib/contain/line.js';
+import {dep} from 'claygl';
+import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 
 import lines3DGLSL from '../../util/shader/lines3D.glsl.js';
 
-var vec3 = glmatrix.vec3;
+var vec3 = dep.glmatrix.vec3;
 
 graphicGL.Shader.import(lines3DGLSL);
 

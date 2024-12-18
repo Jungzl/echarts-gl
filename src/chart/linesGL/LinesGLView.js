@@ -1,11 +1,11 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import ViewGL from '../../core/ViewGL';
-import Lines2DGeometry from '../../util/geometry/Lines2D';
-import GLViewHelper from '../common/GLViewHelper';
-import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual';
+import graphicGL from '../../util/graphicGL.js';
+import ViewGL from '../../core/ViewGL.js';
+import Lines2DGeometry from '../../util/geometry/Lines2D.js';
+import GLViewHelper from '../common/GLViewHelper.js';
+import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 
-import retrieve from '../../util/retrieve';
+import retrieve from '../../util/retrieve.js';
 
 export default echarts.ChartView.extend({
 

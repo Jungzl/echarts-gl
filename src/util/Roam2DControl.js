@@ -1,11 +1,11 @@
 
-import Base from 'claygl/src/core/Base';
-import retrieve from './retrieve';
+import {core} from 'claygl';
+import retrieve from './retrieve.js';
 
 /**
  * @alias module:echarts-gl/util/Roam2DControl
  */
-var Roam2DControl = Base.extend(function () {
+var Roam2DControl = core.Base.extend(function () {
 
     return {
         /**

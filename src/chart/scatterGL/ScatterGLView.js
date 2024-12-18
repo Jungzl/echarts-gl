@@ -1,9 +1,9 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import ViewGL from '../../core/ViewGL';
-import PointsBuilder from '../common/PointsBuilder';
+import graphicGL from '../../util/graphicGL.js';
+import ViewGL from '../../core/ViewGL.js';
+import PointsBuilder from '../common/PointsBuilder.js';
 
-import GLViewHelper from '../common/GLViewHelper';
+import GLViewHelper from '../common/GLViewHelper.js';
 
 export default echarts.ChartView.extend({
 

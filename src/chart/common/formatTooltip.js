@@ -1,5 +1,5 @@
 import * as echarts from 'echarts/lib/echarts';
-import { getItemVisualColor } from '../../util/visual';
+import { getItemVisualColor } from '../../util/visual.js';
 
 function otherDimToDataDim (data, otherDim) {
     var dataDim = [];

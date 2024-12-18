@@ -1,17 +1,31 @@
 {
-  "name": "echarts-gl",
+  "name": "@jungzl/echarts-gl",
   "description": "Extension pack of ECharts providing 3D plots and globe visualization",
-  "version": "2.0.9",
+  "version": "0.0.1",
   "maintainers": [
     {
-      "name": "Yi Shen"
+      "name": "Jungzl"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jungzl/echarts-gl.git"
+  },
+  "license": "BSD-3-Clause",
+  "type": "module",
   "scripts": {
-    "build": "node build/glsl2js.js && node node_modules/webpack/bin/webpack.js --mode development --devtool source-map && node node_modules/webpack/bin/webpack.js --mode production",
-    "dev": "node node_modules/webpack/bin/webpack.js --mode development -w --devtool eval-cheap-module-source-map",
-    "prepublish": "node build/glsl2js.js && ./node_modules/.bin/babel src -d lib",
+    "build": "node scripts/build.js && webpack --mode development --devtool source-map && webpack --mode production",
+    "dev": "webpack --mode development -w --devtool eval-cheap-module-source-map",
+    "prepublish": "node scripts/build.js && babel src -d lib",
     "release": "npm run prepublish && npm run build"
+  },
+  "main": "dist/echarts-gl.cjs",
+  "module": "index.js",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./dist/echarts-gl.cjs"
+    }
   },
   "dependencies": {
     "claygl": "^1.2.1",
@@ -20,20 +34,6 @@
   "peerDependencies": {
     "echarts": "^5.1.2"
   },
-  "main": "dist/echarts-gl.js",
-  "module": "index.js",
-  "repository": "https://github.com/ecomfe/echarts-gl",
-  "sideEffects": [
-    "lib/chart/*.js",
-    "lib/component/*.js",
-    "lib/echarts-gl.js",
-    "lib/export/all.js",
-    "src/chart/*.js",
-    "src/component/*.js",
-    "src/echarts-gl.js",
-    "src/export/all.js",
-    "index.js"
-  ],
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
@@ -48,5 +48,16 @@
     "maptalks": "^0.38.0",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
-  }
+  },
+  "sideEffects": [
+    "lib/chart/*.js",
+    "lib/component/*.js",
+    "lib/echarts-gl.js",
+    "lib/export/all.js",
+    "src/chart/*.js",
+    "src/component/*.js",
+    "src/echarts-gl.js",
+    "src/export/all.js",
+    "index.js"
+  ]
 }

@@ -1,9 +1,9 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
-import Maptalks3DModel from './Maptalks3DModel';
-import Maptalks3DView from './Maptalks3DView';
-import maptalks3DCreator from '../../coord/maptalks3DCreator';
+import Maptalks3DModel from './Maptalks3DModel.js';
+import Maptalks3DView from './Maptalks3DView.js';
+import maptalks3DCreator from '../../coord/maptalks3DCreator.js';
 
 export function install(registers) {
     registers.registerComponentModel(Maptalks3DModel);

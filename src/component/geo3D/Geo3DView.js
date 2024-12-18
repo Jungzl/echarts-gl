@@ -1,9 +1,9 @@
-import Geo3DBuilder from '../common/Geo3DBuilder';
+import Geo3DBuilder from '../common/Geo3DBuilder.js';
 import * as echarts from 'echarts/lib/echarts';
 
-import graphicGL from '../../util/graphicGL';
-import OrbitControl from '../../util/OrbitControl';
-import SceneHelper from '../common/SceneHelper';
+import graphicGL from '../../util/graphicGL.js';
+import OrbitControl from '../../util/OrbitControl.js';
+import SceneHelper from '../common/SceneHelper.js';
 
 export default echarts.ComponentView.extend({
 

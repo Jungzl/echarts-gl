@@ -1,7 +1,7 @@
 import * as echarts from 'echarts/lib/echarts';
-import Maptalks3DLayer from './Maptalks3DLayer';
-import SceneHelper from '../common/SceneHelper';
-import graphicGL from '../../util/graphicGL';
+import Maptalks3DLayer from './Maptalks3DLayer.js';
+import SceneHelper from '../common/SceneHelper.js';
+import graphicGL from '../../util/graphicGL.js';
 
 import displayShadowGLSL from '../../util/shader/displayShadow.glsl.js';
 

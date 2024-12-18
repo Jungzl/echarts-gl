@@ -1,5 +1,5 @@
-import graphicGL from '../../util/graphicGL';
-import Skybox from 'claygl/src/plugin/Skybox';
+import graphicGL from '../../util/graphicGL.js';
+import {plugin} from 'claygl';
 import * as echarts from 'echarts/lib/echarts';
 
 function SceneHelper() {
@@ -100,7 +100,7 @@ SceneHelper.prototype = {
 
         var self = this;
         function getSkybox() {
-            self._skybox = self._skybox || new Skybox();
+            self._skybox = self._skybox || new plugin.Skybox();
             return self._skybox;
         }
 

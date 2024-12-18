@@ -1,11 +1,11 @@
-import Matrix4 from 'claygl/src/math/Matrix4';
-import Vector3 from 'claygl/src/math/Vector3';
-import Texture2D from 'claygl/src/Texture2D';
-import Texture from 'claygl/src/Texture';
-import Pass from 'claygl/src/compositor/Pass';
-import Shader from 'claygl/src/Shader';
-import FrameBuffer from 'claygl/src/FrameBuffer';
-import halton from './halton';
+import {Matrix4} from 'claygl';
+import {Vector3} from 'claygl';
+import {Texture2D} from 'claygl';
+import {Texture} from 'claygl';
+import {compositor} from 'claygl';
+import {Shader} from 'claygl';
+import {FrameBuffer} from 'claygl';
+import halton from './halton.js';
 
 import SSAOGLSL from './SSAO.glsl.js';
 Shader.import(SSAOGLSL);
@@ -69,10 +69,10 @@ function generateKernel(size, offset, hemisphere) {
 function SSAOPass(opt) {
     opt = opt || {};
 
-    this._ssaoPass = new Pass({
+    this._ssaoPass = new compositor.Pass({
         fragment: Shader.source('ecgl.ssao.estimate')
     });
-    this._blurPass = new Pass({
+    this._blurPass = new compositor.Pass({
         fragment: Shader.source('ecgl.ssao.blur')
     });
     this._framebuffer = new FrameBuffer({

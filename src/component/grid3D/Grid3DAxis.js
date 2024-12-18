@@ -1,10 +1,10 @@
 import * as echarts from 'echarts/lib/echarts';
-import {createTextStyle} from 'echarts/lib/label/labelStyle';
+import {createTextStyle} from 'echarts/lib/label/labelStyle.js';
 
-import graphicGL from '../../util/graphicGL';
-import Lines3DGeometry from '../../util/geometry/Lines3D';
-import retrieve from '../../util/retrieve';
-import LabelsMesh from '../../util/mesh/LabelsMesh';
+import graphicGL from '../../util/graphicGL.js';
+import Lines3DGeometry from '../../util/geometry/Lines3D.js';
+import retrieve from '../../util/retrieve.js';
+import LabelsMesh from '../../util/mesh/LabelsMesh.js';
 
 var firstNotNull = retrieve.firstNotNull;
 

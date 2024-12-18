@@ -6,7 +6,7 @@
  * @author Yi Shen(http://github.com/pissang)
  */
 
-import Geometry from 'claygl/src/Geometry';
+import {Geometry} from 'claygl';
 import * as echarts from 'echarts/lib/echarts';
 
 /**

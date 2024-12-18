@@ -1,8 +1,8 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
+import graphicGL from '../../util/graphicGL.js';
 
-import TrailGeometry from './TrailGeometry';
-import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual';
+import TrailGeometry from './TrailGeometry.js';
+import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 
 import trailGLSL from './shader/trail.glsl.js';
 

@@ -1,10 +1,10 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import glmatrix from 'claygl/src/dep/glmatrix';
-import trianglesSortMixin from '../../util/geometry/trianglesSortMixin';
-import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual';
+import graphicGL from '../../util/graphicGL.js';
+import {dep} from 'claygl';
+import trianglesSortMixin from '../../util/geometry/trianglesSortMixin.js';
+import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 
-var vec3 = glmatrix.vec3;
+var vec3 = dep.glmatrix.vec3;
 
 function isPointsNaN(pt) {
     return isNaN(pt[0]) || isNaN(pt[1]) || isNaN(pt[2]);

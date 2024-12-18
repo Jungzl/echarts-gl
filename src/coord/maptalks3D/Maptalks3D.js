@@ -1,4 +1,4 @@
-import MapService3D from '../mapServiceCommon/MapService3D';
+import MapService3D from '../mapServiceCommon/MapService3D.js';
 
 function Maptalks3D() {
     MapService3D.apply(this, arguments);

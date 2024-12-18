@@ -1,10 +1,10 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
 import * as echarts from 'echarts/lib/echarts';
 
-import GraphGLSeries from './GraphGLSeries';
-import GraphGLView from './GraphGLView';
+import GraphGLSeries from './GraphGLSeries.js';
+import GraphGLView from './GraphGLView.js';
 
 function normalize(a) {
     if (!(a instanceof Array)) {

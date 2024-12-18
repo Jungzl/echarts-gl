@@ -1,5 +1,5 @@
 import * as echarts from 'echarts/lib/echarts';
-import componentShadingMixin from '../../component/common/componentShadingMixin';
+import componentShadingMixin from '../../component/common/componentShadingMixin.js';
 
 function transformPolygon(coordSys, poly) {
     var ret = [];

@@ -1,13 +1,13 @@
 // NormalPass will generate normal and depth data.
 
 // TODO Animation
-import Texture2D from 'claygl/src/Texture2D';
-import Texture from 'claygl/src/Texture';
-import Shader from 'claygl/src/Shader';
-import FrameBuffer from 'claygl/src/FrameBuffer';
-import Material from 'claygl/src/Material';
-import Pass from 'claygl/src/compositor/Pass';
-import textureUtil from 'claygl/src/util/texture';
+import {Texture2D} from 'claygl';
+import {Texture} from 'claygl';
+import {Shader} from 'claygl';
+import {FrameBuffer} from 'claygl';
+import {Material} from 'claygl';
+import {compositor} from 'claygl';
+import {util} from 'claygl';
 
 import normalGLSL from '../util/shader/normal.glsl.js';
 Shader.import(normalGLSL);
@@ -139,12 +139,12 @@ function NormalPass(opt) {
     });
     this._normalMaterial.enableTexture(['normalMap', 'bumpMap', 'roughnessMap']);
 
-    this._defaultNormalMap = textureUtil.createBlank('#000');
-    this._defaultBumpMap = textureUtil.createBlank('#000');
-    this._defaultRoughessMap = textureUtil.createBlank('#000');
+    this._defaultNormalMap = util.texture.createBlank('#000');
+    this._defaultBumpMap = util.texture.createBlank('#000');
+    this._defaultRoughessMap = util.texture.createBlank('#000');
 
 
-    this._debugPass = new Pass({
+    this._debugPass = new compositor.Pass({
         fragment: Shader.source('clay.compositor.output')
     });
     this._debugPass.setUniform('texture', this._normalTex);

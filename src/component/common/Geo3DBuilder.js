@@ -1,15 +1,15 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import earcut from '../../util/earcut';
-import LinesGeo from '../../util/geometry/Lines3D';
-import retrieve from '../../util/retrieve';
-import glmatrix from 'claygl/src/dep/glmatrix';
-import trianglesSortMixin from '../../util/geometry/trianglesSortMixin';
-import LabelsBuilder from './LabelsBuilder';
+import graphicGL from '../../util/graphicGL.js';
+import earcut from '../../util/earcut.js';
+import LinesGeo from '../../util/geometry/Lines3D.js';
+import retrieve from '../../util/retrieve.js';
+import {dep} from 'claygl';
+import trianglesSortMixin from '../../util/geometry/trianglesSortMixin.js';
+import LabelsBuilder from './LabelsBuilder.js';
 import lines3DGLSL from '../../util/shader/lines3D.glsl.js';
-import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual';
+import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 
-var vec3 = glmatrix.vec3;
+var vec3 = dep.glmatrix.vec3;
 
 graphicGL.Shader.import(lines3DGLSL);
 

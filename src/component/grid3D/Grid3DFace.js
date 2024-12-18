@@ -1,8 +1,8 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import retrieve from '../../util/retrieve';
-import Lines3DGeometry from '../../util/geometry/Lines3D';
-import QuadsGeometry from '../../util/geometry/Quads';
+import graphicGL from '../../util/graphicGL.js';
+import retrieve from '../../util/retrieve.js';
+import Lines3DGeometry from '../../util/geometry/Lines3D.js';
+import QuadsGeometry from '../../util/geometry/Quads.js';
 var firstNotNull = retrieve.firstNotNull;
 
 var dimIndicesMap = {

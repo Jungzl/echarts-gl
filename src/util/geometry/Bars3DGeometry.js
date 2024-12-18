@@ -6,13 +6,13 @@
  */
 
 import * as echarts from 'echarts/lib/echarts';
-import dynamicConvertMixin from './dynamicConvertMixin';
-import trianglesSortMixin from './trianglesSortMixin';
-import Geometry from 'claygl/src/Geometry';
+import dynamicConvertMixin from './dynamicConvertMixin.js';
+import trianglesSortMixin from './trianglesSortMixin.js';
+import {Geometry} from 'claygl';
 
-import glMatrix from 'claygl/src/dep/glmatrix';
-var vec3 = glMatrix.vec3;
-var mat3 = glMatrix.mat3;
+import {dep} from 'claygl';
+var vec3 = dep.glMatrix.vec3;
+var mat3 = dep.glMatrix.mat3;
 
 /**
  * @constructor

@@ -1,5 +1,5 @@
-import graphicGL from '../graphicGL';
-import SpritesGeometry from '../geometry/Sprites';
+import graphicGL from '../graphicGL.js';
+import SpritesGeometry from '../geometry/Sprites.js';
 
 import labelsGLSL from '../shader/labels.glsl.js';
 graphicGL.Shader.import(labelsGLSL);
