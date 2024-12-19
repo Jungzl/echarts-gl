@@ -13,12 +13,12 @@
   },
   "license": "BSD-3-Clause",
   "type": "module",
-  "packageManager": "npm@10.9.0",
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "build": "node scripts/build.js && rspack -m development && rspack -m production",
     "dev": "rspack -m development -w",
     "prepublish": "node scripts/build.js && babel src -d lib",
-    "release": "npm run prepublish && npm run build"
+    "release": "pnpm run prepublish && pnpm run build"
   },
   "files": [
     "dist",
