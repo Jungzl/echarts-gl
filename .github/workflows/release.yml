@@ -33,6 +33,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm i --no-frozen-lockfile
 
+      - name: Build dist
+        run: pnpm release
+
       - name: Publish to NPM
         run: pnpm publish --access public --no-git-checks
         env:
