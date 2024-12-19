@@ -1,6 +1,5 @@
 import ProgressiveQuickSort from '../ProgressiveQuickSort.js';
-import {dep} from 'claygl';
-var vec3 = dep.glmatrix.vec3;
+import vec3 from 'claygl/src/glmatrix/vec3.js';
 
 export default {
 

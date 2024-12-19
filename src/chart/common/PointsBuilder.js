@@ -3,7 +3,7 @@ import graphicGL from '../../util/graphicGL.js';
 import spriteUtil from '../../util/sprite.js';
 import PointsMesh from './PointsMesh.js';
 import LabelsBuilder from '../../component/common/LabelsBuilder.js';
-import {Matrix4} from 'claygl';
+import Matrix4 from 'claygl/src/math/Matrix4.js';
 import retrieve from '../../util/retrieve.js';
 import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 import { getVisualColor, getVisualOpacity } from '../../util/visual.js';
