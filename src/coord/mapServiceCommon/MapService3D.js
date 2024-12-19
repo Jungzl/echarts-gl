@@ -1,5 +1,4 @@
-import {dep} from 'claygl';
-var mat4 = dep.glmatrix.mat4;
+import mat4 from 'claygl/src/glmatrix/mat4.js';
 
 var TILE_SIZE = 512;
 var FOV = 0.6435011087932844;

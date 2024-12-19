@@ -1,13 +1,13 @@
 // NormalPass will generate normal and depth data.
 
 // TODO Animation
-import {Texture2D} from 'claygl';
-import {Texture} from 'claygl';
-import {Shader} from 'claygl';
-import {FrameBuffer} from 'claygl';
-import {Material} from 'claygl';
-import {compositor} from 'claygl';
-import {util} from 'claygl';
+import Texture2D from 'claygl/src/Texture2D.js';
+import Texture from 'claygl/src/Texture.js';
+import Shader from 'claygl/src/Shader.js';
+import FrameBuffer from 'claygl/src/FrameBuffer.js';
+import Material from 'claygl/src/Material.js';
+import Pass from 'claygl/src/compositor/Pass.js';
+import textureUtil from 'claygl/src/util/texture.js';
 
 import normalGLSL from '../util/shader/normal.glsl.js';
 Shader.import(normalGLSL);
@@ -133,18 +133,18 @@ function NormalPass(opt) {
 
     this._normalMaterial = new Material({
         shader: new Shader(
-            Shader.source('ecgl.normal.vertex'),
-            Shader.source('ecgl.normal.fragment')
+          Shader.source('ecgl.normal.vertex'),
+          Shader.source('ecgl.normal.fragment')
         )
     });
     this._normalMaterial.enableTexture(['normalMap', 'bumpMap', 'roughnessMap']);
 
-    this._defaultNormalMap = util.texture.createBlank('#000');
-    this._defaultBumpMap = util.texture.createBlank('#000');
-    this._defaultRoughessMap = util.texture.createBlank('#000');
+    this._defaultNormalMap = textureUtil.createBlank('#000');
+    this._defaultBumpMap = textureUtil.createBlank('#000');
+    this._defaultRoughessMap = textureUtil.createBlank('#000');
 
 
-    this._debugPass = new compositor.Pass({
+    this._debugPass = new Pass({
         fragment: Shader.source('clay.compositor.output')
     });
     this._debugPass.setUniform('texture', this._normalTex);
@@ -188,7 +188,7 @@ NormalPass.prototype.update = function (renderer, scene, camera) {
             return object.renderNormal;
         },
         beforeRender: getBeforeRenderHook(
-            renderer, this._defaultNormalMap, this._defaultBumpMap, this._defaultRoughessMap, this._normalMaterial
+          renderer, this._defaultNormalMap, this._defaultBumpMap, this._defaultRoughessMap, this._normalMaterial
         ),
         sort: renderer.opaqueSortCompare
     });

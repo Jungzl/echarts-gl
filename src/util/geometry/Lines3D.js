@@ -6,11 +6,10 @@
  * @author Yi Shen(http://github.com/pissang)
  */
 
-import {Geometry} from 'claygl';
+import Geometry from 'claygl/src/Geometry.js';
 import * as echarts from 'echarts/lib/echarts';
 import dynamicConvertMixin from './dynamicConvertMixin.js';
-import {dep} from 'claygl';
-var vec3 = dep.glmatrix.vec3;
+import vec3 from 'claygl/src/glmatrix/vec3.js';
 
 // var CURVE_RECURSION_LIMIT = 8;
 // var CURVE_COLLINEAR_EPSILON = 40;

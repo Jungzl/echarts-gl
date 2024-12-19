@@ -4,10 +4,8 @@ import retrieve from '../../util/retrieve.js';
 import format from '../../util/format.js';
 import BarsGeometry from '../../util/geometry/Bars3DGeometry.js';
 import LabelsBuilder from '../../component/common/LabelsBuilder.js';
-import {dep} from 'claygl';
+import vec3 from 'claygl/src/glmatrix/vec3.js';
 import {getItemVisualColor, getItemVisualOpacity} from '../../util/visual.js';
-
-var vec3 = dep.glmatrix.vec3;
 
 export default echarts.ChartView.extend({
 

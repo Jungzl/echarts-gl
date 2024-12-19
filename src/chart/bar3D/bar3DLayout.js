@@ -1,10 +1,9 @@
 import * as echarts from 'echarts/lib/echarts';
-import {Vector3} from 'claygl';
-import {dep} from 'claygl';
+import Vector3 from 'claygl/src/math/Vector3.js';
+import vec3 from 'claygl/src/glmatrix/vec3.js';
 import cartesian3DLayout from './cartesian3DLayout.js';
 import evaluateBarSparseness from './evaluateBarSparseness.js';
 
-var vec3 = dep.glmatrix.vec3;
 var isDimensionStacked = echarts.helper.dataStack.isDimensionStacked;
 
 function globeLayout(seriesModel, coordSys) {

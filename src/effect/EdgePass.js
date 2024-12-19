@@ -1,15 +1,15 @@
-import {Matrix4} from 'claygl';
-import {Vector3} from 'claygl';
-import {Texture2D} from 'claygl';
-import {Texture} from 'claygl';
-import {compositor} from 'claygl';
-import {Shader} from 'claygl';
-import {FrameBuffer} from 'claygl';
+import Matrix4 from 'claygl/src/math/Matrix4.js';
+import Vector3 from 'claygl/src/math/Vector3.js';
+import Texture2D from 'claygl/src/Texture2D.js';
+import Texture from 'claygl/src/Texture.js';
+import Pass from 'claygl/src/compositor/Pass.js';
+import Shader from 'claygl/src/Shader.js';
+import FrameBuffer from 'claygl/src/FrameBuffer.js';
 
 function EdgePass(opt) {
     opt = opt || {};
 
-    this._edgePass = new compositor.Pass({
+    this._edgePass = new Pass({
         fragment: Shader.source('ecgl.edge')
     });
 

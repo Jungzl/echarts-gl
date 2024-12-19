@@ -6,10 +6,10 @@
  */
 
 // TODO Remove magic numbers on sensitivity
-import {core} from 'claygl';
-import {Vector2} from 'claygl';
-import {Vector3} from 'claygl';
-import {Quaternion} from 'claygl';
+import Base from 'claygl/src/core/Base.js';
+import Vector2 from 'claygl/src/math/Vector2.js';
+import Vector3 from 'claygl/src/math/Vector3.js';
+import Quaternion from 'claygl/src/math/Quaternion.js';
 import retrieve from './retrieve.js';
 var firstNotNull = retrieve.firstNotNull;
 
@@ -30,7 +30,7 @@ function convertToArray(val) {
 /**
  * @alias module:echarts-x/util/OrbitControl
  */
-var OrbitControl = core.Base.extend(function () {
+var OrbitControl = Base.extend(function () {
 
     return {
         /**

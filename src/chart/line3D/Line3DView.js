@@ -2,15 +2,13 @@ import * as echarts from 'echarts/lib/echarts';
 import graphicGL from '../../util/graphicGL.js';
 import retrieve from '../../util/retrieve.js';
 import Lines3DGeometry from '../../util/geometry/Lines3D.js';
-import {Matrix4} from 'claygl';
-import {Vector3} from 'claygl';
+import Matrix4 from 'claygl/src/math/Matrix4.js';
+import Vector3 from 'claygl/src/math/Vector3.js';
 import * as lineContain from 'zrender/lib/contain/line.js';
-import {dep} from 'claygl';
+import vec3 from 'claygl/src/glmatrix/vec3.js';
 import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 
 import lines3DGLSL from '../../util/shader/lines3D.glsl.js';
-
-var vec3 = dep.glmatrix.vec3;
 
 graphicGL.Shader.import(lines3DGLSL);
 

@@ -1,12 +1,12 @@
-import {Matrix4} from 'claygl';
-import {Vector3} from 'claygl';
-import {Texture2D} from 'claygl';
-import {Texture} from 'claygl';
-import {compositor} from 'claygl';
-import {Shader} from 'claygl';
-import {FrameBuffer} from 'claygl';
+import Matrix4 from 'claygl/src/math/Matrix4.js';
+import Vector3 from 'claygl/src/math/Vector3.js';
+import Texture2D from 'claygl/src/Texture2D.js';
+import Texture from 'claygl/src/Texture.js';
+import Pass from 'claygl/src/compositor/Pass.js';
+import Shader from 'claygl/src/Shader.js';
+import FrameBuffer from 'claygl/src/FrameBuffer.js';
 import halton from './halton.js';
-import {util} from 'claygl';
+import cubemapUtil from 'claygl/src/util/cubemap.js';
 
 import SSRGLSLCode from './SSR.glsl.js';
 
@@ -15,19 +15,19 @@ Shader.import(SSRGLSLCode);
 function SSRPass(opt) {
     opt = opt || {};
 
-    this._ssrPass = new compositor.Pass({
+    this._ssrPass = new Pass({
         fragment: Shader.source('ecgl.ssr.main'),
         clearColor: [0, 0, 0, 0]
     });
-    this._blurPass1 = new compositor.Pass({
+    this._blurPass1 = new Pass({
         fragment: Shader.source('ecgl.ssr.blur'),
         clearColor: [0, 0, 0, 0]
     });
-    this._blurPass2 = new compositor.Pass({
+    this._blurPass2 = new Pass({
         fragment: Shader.source('ecgl.ssr.blur'),
         clearColor: [0, 0, 0, 0]
     });
-    this._blendPass = new compositor.Pass({
+    this._blendPass = new Pass({
         fragment: Shader.source('clay.compositor.blend')
     });
     this._blendPass.material.disableTexturesAll();
@@ -176,7 +176,7 @@ SSRPass.prototype.setParameter = function (name, val) {
 SSRPass.prototype.setPhysicallyCorrect = function (isPhysicallyCorrect) {
     if (isPhysicallyCorrect) {
         if (!this._normalDistribution) {
-            this._normalDistribution = util.cubemap.generateNormalDistribution(64, this._totalSamples);
+            this._normalDistribution = cubemapUtil.generateNormalDistribution(64, this._totalSamples);
         }
         this._ssrPass.material.define('fragment', 'PHYSICALLY_CORRECT');
         this._ssrPass.material.set('normalDistribution', this._normalDistribution);

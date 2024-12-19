@@ -12,13 +12,13 @@
  */
 
 import * as echarts from 'echarts/lib/echarts';
-import {Renderer} from 'claygl';
-import {picking} from 'claygl';
-import {Texture} from 'claygl';
+import Renderer from 'claygl/src/Renderer.js';
+import RayPicking from 'claygl/src/picking/RayPicking.js';
+import Texture from 'claygl/src/Texture.js';
 import graphicGL from '../util/graphicGL.js';
 
 // PENDING, clay. notifier is same with zrender Eventful
-import {core} from 'claygl';
+import notifier from 'claygl/src/core/mixin/notifier.js';
 import requestAnimationFrame from 'zrender/lib/animation/requestAnimationFrame.js';
 
 /**
@@ -82,7 +82,7 @@ var LayerGL = function (id, zr) {
      */
     this.views = [];
 
-    this._picking = new picking.RayPicking({
+    this._picking = new RayPicking({
         renderer: this.renderer
     });
 
@@ -673,6 +673,6 @@ LayerGL.prototype._dispatchToView = function (eventName, e) {
     }
 };
 
-Object.assign(LayerGL.prototype, core.mixin.notifier);
+Object.assign(LayerGL.prototype, notifier);
 
 export default LayerGL;

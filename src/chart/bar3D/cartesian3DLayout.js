@@ -1,6 +1,5 @@
 import * as echarts from 'echarts/lib/echarts';
-import {dep} from 'claygl';
-var vec3 = dep.glmatrix.vec3;
+import vec3 from 'claygl/src/glmatrix/vec3.js';
 var isDimensionStacked = echarts.helper.dataStack.isDimensionStacked;
 
 function ifCrossZero(extent) {

@@ -5,14 +5,15 @@
 
 import * as echarts from 'echarts/lib/echarts';
 
-import {Scene} from 'claygl';
-import {prePass} from 'claygl';
-import {camera} from 'claygl';
-import {Matrix4} from 'claygl';
-import {Vector3} from 'claygl';
-import {Vector2} from 'claygl';
+import Scene from 'claygl/src/Scene.js';
+import ShadowMapPass from 'claygl/src/prePass/ShadowMap.js';
+import PerspectiveCamera from 'claygl/src/camera/Perspective.js';
+import OrthographicCamera from 'claygl/src/camera/Orthographic.js';
+import Matrix4 from 'claygl/src/math/Matrix4.js';
+import Vector3 from 'claygl/src/math/Vector3.js';
+import Vector2 from 'claygl/src/math/Vector2.js';
 
-import {core} from 'claygl';
+import notifier from 'claygl/src/core/mixin/notifier.js';
 
 import EffectCompositor from '../effect/EffectCompositor.js';
 import TemporalSuperSampling from '../effect/TemporalSuperSampling.js';
@@ -51,7 +52,7 @@ function ViewGL(projection) {
 
     this._temporalSS = new TemporalSuperSampling();
 
-    this._shadowMapPass = new prePass.ShadowMap();
+    this._shadowMapPass = new ShadowMapPass();
 
     var pcfKernels = [];
     var off = 0;
@@ -81,16 +82,16 @@ ViewGL.prototype.setProjection = function (projection) {
     var oldCamera = this.camera;
     oldCamera && oldCamera.update();
     if (projection === 'perspective') {
-        if (!(this.camera instanceof camera.Perspective)) {
-            this.camera = new camera.Perspective();
+        if (!(this.camera instanceof PerspectiveCamera)) {
+            this.camera = new PerspectiveCamera();
             if (oldCamera) {
                 this.camera.setLocalTransform(oldCamera.localTransform);
             }
         }
     }
     else {
-        if (!(this.camera instanceof camera.Orthographic)) {
-            this.camera = new camera.Orthographic();
+        if (!(this.camera instanceof OrthographicCamera)) {
+            this.camera = new OrthographicCamera();
             if (oldCamera) {
                 this.camera.setLocalTransform(oldCamera.localTransform);
             }
@@ -110,7 +111,7 @@ ViewGL.prototype.setProjection = function (projection) {
  * @param {number} [dpr=1]
  */
 ViewGL.prototype.setViewport = function (x, y, width, height, dpr) {
-    if (this.camera instanceof camera.Perspective) {
+    if (this.camera instanceof PerspectiveCamera) {
         this.camera.aspect = width / height;
     }
     dpr = dpr || 1;
@@ -139,7 +140,7 @@ ViewGL.prototype.containPoint = function (x, y) {
     // Flip y;
     y = height - y;
     return x >= viewport.x && y >= viewport.y
-        && x <= viewport.x + viewport.width && y <= viewport.y + viewport.height;
+      && x <= viewport.x + viewport.width && y <= viewport.y + viewport.height;
 };
 
 /**
@@ -223,7 +224,7 @@ ViewGL.prototype.hasDOF = function () {
 
 ViewGL.prototype.isAccumulateFinished = function () {
     return this.needsTemporalSS() ? this._temporalSS.isFinished()
-        : (this._frame > 30);
+      : (this._frame > 30);
 };
 
 ViewGL.prototype._doRender = function (renderer, accumulating, accumFrame) {
@@ -447,6 +448,6 @@ ViewGL.prototype.removeAll = function (node3D) {
     this.rootNode.removeAll(node3D);
 };
 
-Object.assign(ViewGL.prototype, core.mixin.notifier);
+Object.assign(ViewGL.prototype, notifier);
 
 export default ViewGL;

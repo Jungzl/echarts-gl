@@ -8,11 +8,10 @@
 import * as echarts from 'echarts/lib/echarts';
 import dynamicConvertMixin from './dynamicConvertMixin.js';
 import trianglesSortMixin from './trianglesSortMixin.js';
-import {Geometry} from 'claygl';
+import Geometry from 'claygl/src/Geometry.js';
 
-import {dep} from 'claygl';
-var vec3 = dep.glmatrix.vec3;
-var mat3 = dep.glmatrix.mat3;
+import vec3 from 'claygl/src/glmatrix/vec3.js';
+import mat3 from 'claygl/src/glmatrix/mat3.js';
 
 /**
  * @constructor

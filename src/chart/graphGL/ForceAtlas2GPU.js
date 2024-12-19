@@ -1,6 +1,6 @@
 import graphicGL from '../../util/graphicGL.js';
-import {compositor} from 'claygl';
-import {FrameBuffer} from 'claygl';
+import Pass from 'claygl/src/compositor/Pass.js';
+import FrameBuffer from 'claygl/src/FrameBuffer.js';
 
 import forceAtlas2Code from './forceAtlas2.glsl.js';
 graphicGL.Shader.import(forceAtlas2Code);
@@ -49,16 +49,16 @@ function ForceAtlas2GPU(options) {
     this._globalSpeedTex.width = this._globalSpeedTex.height = 1;
     this._globalSpeedPrevTex.width = this._globalSpeedPrevTex.height = 1;
 
-    this._nodeRepulsionPass = new compositor.Pass({
+    this._nodeRepulsionPass = new Pass({
         fragment: graphicGL.Shader.source('ecgl.forceAtlas2.updateNodeRepulsion')
     });
-    this._positionPass = new compositor.Pass({
+    this._positionPass = new Pass({
         fragment: graphicGL.Shader.source('ecgl.forceAtlas2.updatePosition')
     });
-    this._globalSpeedPass = new compositor.Pass({
+    this._globalSpeedPass = new Pass({
         fragment: graphicGL.Shader.source('ecgl.forceAtlas2.calcGlobalSpeed')
     });
-    this._copyPass = new compositor.Pass({
+    this._copyPass = new Pass({
         fragment: graphicGL.Shader.source('clay.compositor.output')
     });
 
@@ -343,9 +343,9 @@ ForceAtlas2GPU.prototype.update = function (renderer, steps, cb) {
 
 ForceAtlas2GPU.prototype.getNodePositionTexture = function () {
     return this._inited
-        // Texture already been swapped.
-        ? this._positionPrevTex
-        : this._positionSourceTex;
+      // Texture already been swapped.
+      ? this._positionPrevTex
+      : this._positionSourceTex;
 };
 
 ForceAtlas2GPU.prototype.getNodeUV = function (nodeIndex, uv) {
@@ -368,9 +368,9 @@ ForceAtlas2GPU.prototype.getNodePosition = function (renderer, out) {
     this._framebuffer.bind(renderer);
     this._framebuffer.attach(this._positionPrevTex);
     renderer.gl.readPixels(
-        0, 0, width, height,
-        renderer.gl.RGBA, renderer.gl.FLOAT,
-        positionArr
+      0, 0, width, height,
+      renderer.gl.RGBA, renderer.gl.FLOAT,
+      positionArr
     );
     this._framebuffer.unbind(renderer);
     if (!out) {

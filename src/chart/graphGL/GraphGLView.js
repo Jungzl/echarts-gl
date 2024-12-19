@@ -7,10 +7,8 @@ import retrieve from '../../util/retrieve.js';
 import ForceAtlas2GPU from './ForceAtlas2GPU.js';
 import ForceAtlas2 from './ForceAtlas2.js';
 import requestAnimationFrame from 'zrender/lib/animation/requestAnimationFrame.js';
-import {dep} from 'claygl';
+import vec2 from 'claygl/src/glmatrix/vec2.js';
 import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
-
-var vec2 = dep.glmatrix.vec2;
 
 import Roam2DControl from '../../util/Roam2DControl.js';
 

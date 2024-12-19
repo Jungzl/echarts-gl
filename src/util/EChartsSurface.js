@@ -6,9 +6,9 @@
  * @author Yi Shen(http://github.com/pissang)
  */
 
-import {Texture2D} from 'claygl';
-import {Vector3} from 'claygl';
-import {Vector2} from 'claygl';
+import Texture2D from 'claygl/src/Texture2D.js';
+import Vector3 from 'claygl/src/math/Vector3.js';
+import Vector2 from 'claygl/src/math/Vector2.js';
 
 var events = ['mousedown', 'mouseup', 'mousemove', 'mouseover', 'mouseout', 'click', 'dblclick', 'contextmenu'];
 

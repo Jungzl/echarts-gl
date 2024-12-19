@@ -1,39 +1,49 @@
-import {Mesh} from 'claygl';
-import {Renderer} from 'claygl';
-import {Texture2D} from 'claygl';
-import {Texture} from 'claygl';
-import {Shader} from 'claygl';
-import {Material} from 'claygl';
-import {Node} from 'claygl';
-import {Geometry} from 'claygl';
+import Mesh from 'claygl/src/Mesh.js';
+import Renderer from 'claygl/src/Renderer.js';
+import Texture2D from 'claygl/src/Texture2D.js';
+import Texture from 'claygl/src/Texture.js';
+import Shader from 'claygl/src/Shader.js';
+import Material from 'claygl/src/Material.js';
+import Node3D from 'claygl/src/Node.js';
+import Geometry from 'claygl/src/Geometry.js';
 import * as echarts from 'echarts/lib/echarts';
-import {Scene} from 'claygl';
+import Scene from 'claygl/src/Scene.js';
 import LRUCache from 'zrender/lib/core/LRU.js';
-import {util} from 'claygl';
+import textureUtil from 'claygl/src/util/texture.js';
 import EChartsSurface from './EChartsSurface.js';
-import {light} from 'claygl';
+import AmbientCubemapLight from 'claygl/src/light/AmbientCubemap.js';
+import AmbientSHLight from 'claygl/src/light/AmbientSH.js';
+import shUtil from 'claygl/src/util/sh.js';
 import retrieve from './retrieve.js';
 
-import {geometry} from 'claygl';
+import SphereGeometry from 'claygl/src/geometry/Sphere.js';
+import PlaneGeometry from 'claygl/src/geometry/Plane.js';
+import CubeGeometry from 'claygl/src/geometry/Cube.js';
 
-import {camera} from 'claygl';
+import AmbientLight from 'claygl/src/light/Ambient.js';
+import DirectionalLight from 'claygl/src/light/Directional.js';
+import PointLight from 'claygl/src/light/Point.js';
+import SpotLight from 'claygl/src/light/Spot.js';
+
+import PerspectiveCamera from 'claygl/src/camera/Perspective.js';
+import OrthographicCamera from 'claygl/src/camera/Orthographic.js';
 
 // Math
-import {Vector2} from 'claygl';
-import {Vector3} from 'claygl';
-import {Vector4} from 'claygl';
+import Vector2 from 'claygl/src/math/Vector2.js';
+import Vector3 from 'claygl/src/math/Vector3.js';
+import Vector4 from 'claygl/src/math/Vector4.js';
 
-import {Quaternion} from 'claygl';
+import Quaternion from 'claygl/src/math/Quaternion.js';
 
-import {Matrix2} from 'claygl';
-import {Matrix2d} from 'claygl';
-import {Matrix3} from 'claygl';
-import {Matrix4} from 'claygl';
+import Matrix2 from 'claygl/src/math/Matrix2.js';
+import Matrix2d from 'claygl/src/math/Matrix2d.js';
+import Matrix3 from 'claygl/src/math/Matrix3.js';
+import Matrix4 from 'claygl/src/math/Matrix4.js';
 
-import {Plane} from 'claygl';
-import {Ray} from 'claygl';
-import {BoundingBox} from 'claygl';
-import {Frustum} from 'claygl';
+import Plane from 'claygl/src/math/Plane.js';
+import Ray from 'claygl/src/math/Ray.js';
+import BoundingBox from 'claygl/src/math/BoundingBox.js';
+import Frustum from 'claygl/src/math/Frustum.js';
 
 import animatableMixin from './animatableMixin.js';
 // Some common shaders
@@ -47,7 +57,7 @@ import realisticGLSL from './shader/realistic.glsl.js';
 import hatchingGLSL from './shader/hatching.glsl.js';
 import shadowGLSL from './shader/shadow.glsl.js';
 
-Object.assign(Node.prototype, animatableMixin);
+Object.assign(Node3D.prototype, animatableMixin);
 
 Shader.import(utilGLSL);
 Shader.import(prezGLSL);
@@ -64,8 +74,8 @@ function isValueNone(value) {
 
 function isValueImage(value) {
     return value instanceof HTMLCanvasElement
-        || value instanceof HTMLImageElement
-        || value instanceof Image;
+      || value instanceof HTMLImageElement
+      || value instanceof Image;
 }
 
 function isECharts(value) {
@@ -135,7 +145,7 @@ var graphicGL = {};
 
 graphicGL.Renderer = Renderer;
 
-graphicGL.Node = Node;
+graphicGL.Node = Node3D;
 
 graphicGL.Mesh = Mesh;
 
@@ -149,19 +159,19 @@ graphicGL.Texture2D = Texture2D;
 
 // Geometries
 graphicGL.Geometry = Geometry;
-graphicGL.SphereGeometry = geometry.Sphere;
-graphicGL.PlaneGeometry = geometry.Plane;
-graphicGL.CubeGeometry = geometry.Cube;
+graphicGL.SphereGeometry = SphereGeometry;
+graphicGL.PlaneGeometry = PlaneGeometry;
+graphicGL.CubeGeometry = CubeGeometry;
 
 // Lights
-graphicGL.AmbientLight = light.Ambient;
-graphicGL.DirectionalLight = light.Directional;
-graphicGL.PointLight = light.Point;
-graphicGL.SpotLight = light.Spot;
+graphicGL.AmbientLight = AmbientLight;
+graphicGL.DirectionalLight = DirectionalLight;
+graphicGL.PointLight = PointLight;
+graphicGL.SpotLight = SpotLight;
 
 // Cameras
-graphicGL.PerspectiveCamera = camera.Perspective;
-graphicGL.OrthographicCamera = camera.Orthographic;
+graphicGL.PerspectiveCamera = PerspectiveCamera;
+graphicGL.OrthographicCamera = OrthographicCamera;
 
 // Math
 graphicGL.Vector2 = Vector2;
@@ -187,7 +197,7 @@ function getBlankImage() {
     if (blankImage !== null) {
         return blankImage;
     }
-    blankImage = util.texture.createBlank('rgba(255,255,255,0)').image;
+    blankImage = textureUtil.createBlank('rgba(255,255,255,0)').image;
     return blankImage;
 }
 
@@ -298,7 +308,7 @@ graphicGL.loadTexture = function (imgValue, api, textureOpts, cb) {
                 textureObj = {
                     callbacks: [cb]
                 };
-                var texture = util.texture.loadTexture(imgValue, {
+                var texture = textureUtil.loadTexture(imgValue, {
                     exposure: textureOpts.exposure,
                     fileType: 'hdr'
                 }, function () {
@@ -356,10 +366,10 @@ graphicGL.createAmbientCubemap = function (opt, renderer, api, cb) {
     var textureUrl = opt.texture;
     var exposure = retrieve.firstNotNull(opt.exposure, 1.0);
 
-    var ambientCubemap = new light.AmbientCubemap({
+    var ambientCubemap = new AmbientCubemapLight({
         intensity: retrieve.firstNotNull(opt.specularIntensity, 1.0)
     });
-    var ambientSH = new light.AmbientSH({
+    var ambientSH = new AmbientSHLight({
         intensity: retrieve.firstNotNull(opt.diffuseIntensity, 1.0),
         coefficients: [0.844, 0.712, 0.691, -0.037, 0.083, 0.167, 0.343, 0.288, 0.299, -0.041, -0.021, -0.009, -0.003, -0.041, -0.064, -0.011, -0.007, -0.004, -0.031, 0.034, 0.081, -0.060, -0.049, -0.060, 0.046, 0.056, 0.050]
     });
@@ -378,7 +388,7 @@ graphicGL.createAmbientCubemap = function (opt, renderer, api, cb) {
             var dTime = Date.now() - time;
             console.log('Prefilter environment map: ' + dTime + 'ms');
         }
-        ambientSH.coefficients = util.sh.projectEnvironmentMap(renderer, ambientCubemap.cubemap, {
+        ambientSH.coefficients = shUtil.projectEnvironmentMap(renderer, ambientCubemap.cubemap, {
             lod: 1
         });
 
@@ -396,7 +406,7 @@ graphicGL.createAmbientCubemap = function (opt, renderer, api, cb) {
 /**
  * Create a blank texture for placeholder
  */
-graphicGL.createBlankTexture = util.texture.createBlank;
+graphicGL.createBlankTexture = textureUtil.createBlank;
 
 /**
  * If value is image
@@ -581,8 +591,8 @@ graphicGL.setMaterialFromModel = function (shading, material, model, api) {
         });
         // var normalTexture = material.get('normalMap');
         // if (normalTexture) {
-            // PENDING
-            // normalTexture.format = Texture.SRGB;
+        // PENDING
+        // normalTexture.format = Texture.SRGB;
         // }
     }
     else if (shading === 'lambert') {
@@ -621,7 +631,7 @@ graphicGL.setMaterialFromModel = function (shading, material, model, api) {
 };
 
 graphicGL.updateVertexAnimation = function (
-    mappingAttributes, previousMesh, currentMesh, seriesModel
+  mappingAttributes, previousMesh, currentMesh, seriesModel
 ) {
     var enableAnimation = seriesModel.get('animation');
     var duration = seriesModel.get('animationDurationUpdate');
@@ -629,8 +639,8 @@ graphicGL.updateVertexAnimation = function (
     var shadowDepthMaterial = currentMesh.shadowDepthMaterial;
 
     if (enableAnimation && previousMesh && duration > 0
-    // Only animate when bar count are not changed
-    && previousMesh.geometry.vertexCount === currentMesh.geometry.vertexCount
+      // Only animate when bar count are not changed
+      && previousMesh.geometry.vertexCount === currentMesh.geometry.vertexCount
     ) {
         currentMesh.material.define('vertex', 'VERTEX_ANIMATION');
         currentMesh.ignorePreZ = true;
@@ -639,30 +649,30 @@ graphicGL.updateVertexAnimation = function (
         }
         for (var i = 0; i < mappingAttributes.length; i++) {
             currentMesh.geometry.attributes[mappingAttributes[i][0]].value =
-            previousMesh.geometry.attributes[mappingAttributes[i][1]].value;
+              previousMesh.geometry.attributes[mappingAttributes[i][1]].value;
         }
         currentMesh.geometry.dirty();
         currentMesh.__percent = 0;
         currentMesh.material.set('percent', 0);
         currentMesh.stopAnimation();
         currentMesh.animate()
-            .when(duration, {
-                __percent: 1
-            })
-            .during(function () {
-                currentMesh.material.set('percent', currentMesh.__percent);
-                if (shadowDepthMaterial) {
-                    shadowDepthMaterial.set('percent', currentMesh.__percent);
-                }
-            })
-            .done(function () {
-                currentMesh.ignorePreZ = false;
-                currentMesh.material.undefine('vertex', 'VERTEX_ANIMATION');
-                if (shadowDepthMaterial) {
-                    shadowDepthMaterial.undefine('vertex', 'VERTEX_ANIMATION');
-                }
-            })
-            .start(easing);
+          .when(duration, {
+              __percent: 1
+          })
+          .during(function () {
+              currentMesh.material.set('percent', currentMesh.__percent);
+              if (shadowDepthMaterial) {
+                  shadowDepthMaterial.set('percent', currentMesh.__percent);
+              }
+          })
+          .done(function () {
+              currentMesh.ignorePreZ = false;
+              currentMesh.material.undefine('vertex', 'VERTEX_ANIMATION');
+              if (shadowDepthMaterial) {
+                  shadowDepthMaterial.undefine('vertex', 'VERTEX_ANIMATION');
+              }
+          })
+          .start(easing);
     }
     else {
         currentMesh.material.undefine('vertex', 'VERTEX_ANIMATION');

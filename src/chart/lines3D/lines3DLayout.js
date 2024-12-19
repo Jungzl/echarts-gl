@@ -1,7 +1,6 @@
 import * as echarts from 'echarts/lib/echarts';
-import {dep} from 'claygl';
-var vec3 = dep.glmatrix.vec3;
-var vec2 = dep.glmatrix.vec2;
+import vec3 from 'claygl/src/glmatrix/vec3.js';
+import vec2 from 'claygl/src/glmatrix/vec2.js';
 var normalize = vec3.normalize;
 var cross = vec3.cross;
 var sub = vec3.sub;

@@ -3,13 +3,11 @@ import graphicGL from '../../util/graphicGL.js';
 import earcut from '../../util/earcut.js';
 import LinesGeo from '../../util/geometry/Lines3D.js';
 import retrieve from '../../util/retrieve.js';
-import {dep} from 'claygl';
+import vec3 from 'claygl/src/glmatrix/vec3.js';
 import trianglesSortMixin from '../../util/geometry/trianglesSortMixin.js';
 import LabelsBuilder from './LabelsBuilder.js';
 import lines3DGLSL from '../../util/shader/lines3D.glsl.js';
 import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
-
-var vec3 = dep.glmatrix.vec3;
 
 graphicGL.Shader.import(lines3DGLSL);
 

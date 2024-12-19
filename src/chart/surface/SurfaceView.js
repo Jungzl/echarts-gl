@@ -1,10 +1,8 @@
 import * as echarts from 'echarts/lib/echarts';
 import graphicGL from '../../util/graphicGL.js';
-import {dep} from 'claygl';
+import vec3 from 'claygl/src/glmatrix/vec3.js';
 import trianglesSortMixin from '../../util/geometry/trianglesSortMixin.js';
 import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
-
-var vec3 = dep.glmatrix.vec3;
 
 function isPointsNaN(pt) {
     return isNaN(pt[0]) || isNaN(pt[1]) || isNaN(pt[2]);

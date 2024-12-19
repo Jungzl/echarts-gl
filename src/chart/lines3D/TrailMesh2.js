@@ -1,12 +1,9 @@
 import * as echarts from 'echarts/lib/echarts';
 import graphicGL from '../../util/graphicGL.js';
-import {dep} from 'claygl';
-
+import vec3 from 'claygl/src/glmatrix/vec3.js';
 import Lines3DGeometry from '../../util/geometry/Lines3D.js';
 import trail2GLSL from './shader/trail2.glsl.js';
 import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
-
-var vec3 = dep.glmatrix.vec3;
 
 function sign(a) {
     return a > 0 ? 1 : -1;

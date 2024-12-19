@@ -1,14 +1,14 @@
-import {compositor} from 'claygl';
-import {Geometry} from 'claygl';
-import {Mesh} from 'claygl';
-import {Material} from 'claygl';
-import {Shader} from 'claygl';
-import {Texture2D} from 'claygl';
-import {Texture} from 'claygl';
-import {camera} from 'claygl';
-import {geometry} from 'claygl';
+import Pass from 'claygl/src/compositor/Pass.js';
+import Geometry from 'claygl/src/Geometry.js';
+import Mesh from 'claygl/src/Mesh.js';
+import Material from 'claygl/src/Material.js';
+import Shader from 'claygl/src/Shader.js';
+import Texture2D from 'claygl/src/Texture2D.js';
+import Texture from 'claygl/src/Texture.js';
+import OrthoCamera from 'claygl/src/camera/Orthographic.js';
+import PlaneGeometry from 'claygl/src/geometry/Plane.js';
 
-import {FrameBuffer} from 'claygl';
+import FrameBuffer from 'claygl/src/FrameBuffer.js';
 import Line2DGeometry from './Line2D.js';
 // import TemporalSS from '../../effect/TemporalSuperSampling';
 
@@ -122,13 +122,13 @@ VectorFieldParticleSurface.prototype = {
         this._frameBuffer = new FrameBuffer({
             depthBuffer: false
         });
-        this._particlePass = new compositor.Pass({
+        this._particlePass = new Pass({
             fragment: Shader.source('ecgl.vfParticle.particle.fragment')
         });
         this._particlePass.setUniform('velocityTexture', this.vectorFieldTexture);
         this._particlePass.setUniform('spawnTexture', this._spawnTexture);
 
-        this._downsamplePass = new compositor.Pass({
+        this._downsamplePass = new Pass({
             fragment: Shader.source('clay.compositor.downsample')
         });
 
@@ -137,8 +137,8 @@ VectorFieldParticleSurface.prototype = {
             renderOrder: 10,
             material: new Material({
                 shader: new Shader(
-                    Shader.source('ecgl.vfParticle.renderPoints.vertex'),
-                    Shader.source('ecgl.vfParticle.renderPoints.fragment')
+                  Shader.source('ecgl.vfParticle.renderPoints.vertex'),
+                  Shader.source('ecgl.vfParticle.renderPoints.fragment')
                 )
             }),
             mode: Mesh.POINTS,
@@ -152,8 +152,8 @@ VectorFieldParticleSurface.prototype = {
             renderOrder: 10,
             material: new Material({
                 shader: new Shader(
-                    Shader.source('ecgl.vfParticle.renderLines.vertex'),
-                    Shader.source('ecgl.vfParticle.renderLines.fragment')
+                  Shader.source('ecgl.vfParticle.renderLines.vertex'),
+                  Shader.source('ecgl.vfParticle.renderLines.fragment')
                 )
             }),
             geometry: new Line2DGeometry(),
@@ -162,13 +162,13 @@ VectorFieldParticleSurface.prototype = {
         var lastFrameFullQuad = new Mesh({
             material: new Material({
                 shader: new Shader(
-                    Shader.source('ecgl.color.vertex'),
-                    Shader.source('ecgl.color.fragment')
+                  Shader.source('ecgl.color.vertex'),
+                  Shader.source('ecgl.color.fragment')
                 )
                 // DO NOT BLEND Blend will multiply alpha
                 // transparent: true
             }),
-            geometry: new geometry.Plane()
+            geometry: new PlaneGeometry()
         });
         lastFrameFullQuad.material.enableTexture('diffuseMap');
 
@@ -176,7 +176,7 @@ VectorFieldParticleSurface.prototype = {
         this._particleLinesMesh = particleLinesMesh;
         this._lastFrameFullQuadMesh = lastFrameFullQuad;
 
-        this._camera = new camera.Orthographic();
+        this._camera = new OrthoCamera();
         this._thisFrameTexture = new Texture2D();
         this._lastFrameTexture = new Texture2D();
     },
@@ -315,8 +315,8 @@ VectorFieldParticleSurface.prototype = {
     getSurfaceTexture: function () {
         var downsampleTextures = this._downsampleTextures;
         return downsampleTextures.length > 0
-            ? downsampleTextures[downsampleTextures.length - 1]
-            : this._lastFrameTexture;
+          ? downsampleTextures[downsampleTextures.length - 1]
+          : this._lastFrameTexture;
     },
 
     setRegion: function (region) {

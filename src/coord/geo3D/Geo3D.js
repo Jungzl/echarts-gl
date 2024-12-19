@@ -1,7 +1,6 @@
 import * as echarts from 'echarts/lib/echarts';
-import {dep} from 'claygl';
-var vec3 = dep.glmatrix.vec3;
-var mat4 = dep.glmatrix.mat4;
+import vec3 from 'claygl/src/glmatrix/vec3.js';
+import mat4 from 'claygl/src/glmatrix/mat4.js';
 
 import textCoord from 'echarts/lib/coord/geo/fix/textCoord.js';
 import geoCoord from 'echarts/lib/coord/geo/fix/geoCoord.js';
