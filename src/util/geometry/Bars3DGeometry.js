@@ -11,8 +11,8 @@ import trianglesSortMixin from './trianglesSortMixin.js';
 import {Geometry} from 'claygl';
 
 import {dep} from 'claygl';
-var vec3 = dep.glMatrix.vec3;
-var mat3 = dep.glMatrix.mat3;
+var vec3 = dep.glmatrix.vec3;
+var mat3 = dep.glmatrix.mat3;
 
 /**
  * @constructor
