@@ -1,8 +1,8 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
-import Scatter3DSeries from './Scatter3DSeries';
-import Scatter3DView from './Scatter3DView';
+import Scatter3DSeries from './Scatter3DSeries.js';
+import Scatter3DView from './Scatter3DView.js';
 
 export function install(registers) {
     registers.registerChartView(Scatter3DView);

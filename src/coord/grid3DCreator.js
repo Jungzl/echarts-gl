@@ -1,9 +1,9 @@
-import Cartesian3D from './grid3D/Cartesian3D';
-import Axis3D from './grid3D/Axis3D';
+import Cartesian3D from './grid3D/Cartesian3D.js';
+import Axis3D from './grid3D/Axis3D.js';
 import * as echarts from 'echarts/lib/echarts';
-import {getLayoutRect} from 'echarts/lib/util/layout';
-import ViewGL from '../core/ViewGL';
-import retrieve from '../util/retrieve';
+import {getLayoutRect} from 'echarts/lib/util/layout.js';
+import ViewGL from '../core/ViewGL.js';
+import retrieve from '../util/retrieve.js';
 
 function resizeCartesian3D(grid3DModel, api) {
     // Use left/top/width/height

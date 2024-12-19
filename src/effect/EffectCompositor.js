@@ -1,14 +1,14 @@
-import Shader from 'claygl/src/Shader';
-import Texture2D from 'claygl/src/Texture2D';
-import Texture from 'claygl/src/Texture';
-import FrameBuffer from 'claygl/src/FrameBuffer';
-import createCompositor from 'claygl/src/compositor/createCompositor';
-import SSAOPass from './SSAOPass';
-import SSRPass from './SSRPass';
-import poissonKernel from './poissonKernel';
-import graphicGL from '../util/graphicGL';
-import NormalPass from './NormalPass';
-import EdgePass from './EdgePass';
+import {Shader} from 'claygl';
+import {Texture2D} from 'claygl';
+import {Texture} from 'claygl';
+import {FrameBuffer} from 'claygl';
+import {compositor} from 'claygl';
+import SSAOPass from './SSAOPass.js';
+import SSRPass from './SSRPass.js';
+import poissonKernel from './poissonKernel.js';
+import graphicGL from '../util/graphicGL.js';
+import NormalPass from './NormalPass.js';
+import EdgePass from './EdgePass.js';
 
 import effectJson from './composite.js';
 
@@ -70,7 +70,7 @@ function EffectCompositor() {
 
     this._normalPass = new NormalPass();
 
-    this._compositor = createCompositor(effectJson);
+    this._compositor = compositor.createCompositor(effectJson);
 
     var sourceNode = this._compositor.getNodeByName('source');
     sourceNode.texture = this._sourceTexture;

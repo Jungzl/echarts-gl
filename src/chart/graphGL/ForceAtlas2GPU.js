@@ -1,6 +1,6 @@
-import graphicGL from '../../util/graphicGL';
-import Pass from 'claygl/src/compositor/Pass';
-import FrameBuffer from 'claygl/src/FrameBuffer';
+import graphicGL from '../../util/graphicGL.js';
+import {compositor} from 'claygl';
+import {FrameBuffer} from 'claygl';
 
 import forceAtlas2Code from './forceAtlas2.glsl.js';
 graphicGL.Shader.import(forceAtlas2Code);
@@ -49,16 +49,16 @@ function ForceAtlas2GPU(options) {
     this._globalSpeedTex.width = this._globalSpeedTex.height = 1;
     this._globalSpeedPrevTex.width = this._globalSpeedPrevTex.height = 1;
 
-    this._nodeRepulsionPass = new Pass({
+    this._nodeRepulsionPass = new compositor.Pass({
         fragment: graphicGL.Shader.source('ecgl.forceAtlas2.updateNodeRepulsion')
     });
-    this._positionPass = new Pass({
+    this._positionPass = new compositor.Pass({
         fragment: graphicGL.Shader.source('ecgl.forceAtlas2.updatePosition')
     });
-    this._globalSpeedPass = new Pass({
+    this._globalSpeedPass = new compositor.Pass({
         fragment: graphicGL.Shader.source('ecgl.forceAtlas2.calcGlobalSpeed')
     });
-    this._copyPass = new Pass({
+    this._copyPass = new compositor.Pass({
         fragment: graphicGL.Shader.source('clay.compositor.output')
     });
 

@@ -1,13 +1,13 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import retrieve from '../../util/retrieve';
-import format from '../../util/format';
-import BarsGeometry from '../../util/geometry/Bars3DGeometry';
-import LabelsBuilder from '../../component/common/LabelsBuilder';
-import glmatrix from 'claygl/src/dep/glmatrix';
-import {getItemVisualColor, getItemVisualOpacity} from '../../util/visual';
+import graphicGL from '../../util/graphicGL.js';
+import retrieve from '../../util/retrieve.js';
+import format from '../../util/format.js';
+import BarsGeometry from '../../util/geometry/Bars3DGeometry.js';
+import LabelsBuilder from '../../component/common/LabelsBuilder.js';
+import {dep} from 'claygl';
+import {getItemVisualColor, getItemVisualOpacity} from '../../util/visual.js';
 
-var vec3 = glmatrix.vec3;
+var vec3 = dep.glmatrix.vec3;
 
 export default echarts.ChartView.extend({
 

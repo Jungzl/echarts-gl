@@ -1,7 +1,7 @@
 import * as echarts from 'echarts/lib/echarts';
-import Graph from 'echarts/lib/data/Graph';
-import linkList from 'echarts/lib/data/helper/linkList';
-import retrieve from '../../util/retrieve';
+import Graph from 'echarts/lib/data/Graph.js';
+import linkList from 'echarts/lib/data/helper/linkList.js';
+import retrieve from '../../util/retrieve.js';
 
 export default function (nodes, edges, hostModel, directed, beforeLink) {
     var graph = new Graph(directed);

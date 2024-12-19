@@ -5,8 +5,8 @@
  * @author Yi Shen(https://github.com/pissang)
  */
 import * as echarts from 'echarts/lib/echarts';
-import Geometry from 'claygl/src/Geometry';
-import dynamicConvertMixin from './dynamicConvertMixin';
+import {Geometry} from 'claygl';
+import dynamicConvertMixin from './dynamicConvertMixin.js';
 
 var squareTriangles = [
     0, 1, 2, 0, 2, 3

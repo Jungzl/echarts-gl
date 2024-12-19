@@ -1,10 +1,10 @@
 // Temporal Super Sample for static Scene
-import halton from './halton';
-import Pass from 'claygl/src/compositor/Pass';
-import FrameBuffer from 'claygl/src/FrameBuffer';
-import Texture2D from 'claygl/src/Texture2D';
-import Shader from 'claygl/src/Shader';
-import Matrix4 from 'claygl/src/math/Matrix4';
+import halton from './halton.js';
+import {compositor} from 'claygl';
+import {FrameBuffer} from 'claygl';
+import {Texture2D} from 'claygl';
+import {Shader} from 'claygl';
+import {Matrix4} from 'claygl';
 
 function TemporalSuperSampling (frames) {
     var haltonSequence = [];
@@ -25,7 +25,7 @@ function TemporalSuperSampling (frames) {
     this._prevFrameTex = new Texture2D();
     this._outputTex = new Texture2D();
 
-    var blendPass = this._blendPass = new Pass({
+    var blendPass = this._blendPass = new compositor.Pass({
         fragment: Shader.source('clay.compositor.blend')
     });
     blendPass.material.disableTexturesAll();
@@ -35,7 +35,7 @@ function TemporalSuperSampling (frames) {
         depthBuffer: false
     });
 
-    this._outputPass = new Pass({
+    this._outputPass = new compositor.Pass({
         fragment: Shader.source('clay.compositor.output'),
         // TODO, alpha is premultiplied?
         blendWithPrevious: true

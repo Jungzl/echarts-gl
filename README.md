@@ -1,3 +1,5 @@
+# This is a fork of [echarts-gl](https://github.com/ecomfe/echarts-gl)
+
 # ECHARTS-GL
 
 ECharts-GL is an extension pack of [Apache ECharts](http://echarts.apache.org/), which providing 3D plots, globe visualization and WebGL acceleration.

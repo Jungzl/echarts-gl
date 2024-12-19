@@ -1,12 +1,12 @@
 import * as echarts from 'echarts/lib/echarts';
-import componentViewControlMixin from '../../component/common/componentViewControlMixin';
-import componentPostEffectMixin from '../../component/common/componentPostEffectMixin';
-import componentLightMixin from '../../component/common/componentLightMixin';
-import componentShadingMixin from '../../component/common/componentShadingMixin';
-import geo3DModelMixin from '../../coord/geo3D/geo3DModelMixin';
-import formatUtil from '../../util/format';
-import formatTooltip from '../common/formatTooltip';
-import geo3DCreator from '../../coord/geo3DCreator';
+import componentViewControlMixin from '../../component/common/componentViewControlMixin.js';
+import componentPostEffectMixin from '../../component/common/componentPostEffectMixin.js';
+import componentLightMixin from '../../component/common/componentLightMixin.js';
+import componentShadingMixin from '../../component/common/componentShadingMixin.js';
+import geo3DModelMixin from '../../coord/geo3D/geo3DModelMixin.js';
+import formatUtil from '../../util/format.js';
+import formatTooltip from '../common/formatTooltip.js';
+import geo3DCreator from '../../coord/geo3DCreator.js';
 
 function transformPolygon(mapbox3DCoordSys, poly) {
     var newPoly = [];

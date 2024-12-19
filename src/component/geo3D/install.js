@@ -1,9 +1,9 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
-import Geo3DModel from './Geo3DModel';
-import Geo3DView from './Geo3DView';
-import geo3DCreator from '../../coord/geo3DCreator';
+import Geo3DModel from './Geo3DModel.js';
+import Geo3DView from './Geo3DView.js';
+import geo3DCreator from '../../coord/geo3DCreator.js';
 
 export function install(registers) {
     registers.registerComponentModel(Geo3DModel);

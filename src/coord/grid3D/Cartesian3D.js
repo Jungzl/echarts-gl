@@ -1,5 +1,5 @@
 import * as echarts from 'echarts/lib/echarts';
-import Cartesian from 'echarts/lib/coord/cartesian/Cartesian';
+import Cartesian from 'echarts/lib/coord/cartesian/Cartesian.js';
 
 function Cartesian3D(name) {
 

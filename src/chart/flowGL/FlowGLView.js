@@ -1,9 +1,9 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import retrieve from '../../util/retrieve';
-import ViewGL from '../../core/ViewGL';
+import graphicGL from '../../util/graphicGL.js';
+import retrieve from '../../util/retrieve.js';
+import ViewGL from '../../core/ViewGL.js';
 
-import VectorFieldParticleSurface from './VectorFieldParticleSurface';
+import VectorFieldParticleSurface from './VectorFieldParticleSurface.js';
 
 
 // TODO 百度地图不是 linear 的

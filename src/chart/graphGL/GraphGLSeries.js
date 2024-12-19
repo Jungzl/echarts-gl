@@ -1,6 +1,6 @@
 import * as echarts from 'echarts/lib/echarts';
-import createGraphFromNodeEdge from './createGraphFromNodeEdge';
-import formatUtil from '../../util/format';
+import createGraphFromNodeEdge from './createGraphFromNodeEdge.js';
+import formatUtil from '../../util/format.js';
 
 var GraphSeries = echarts.SeriesModel.extend({
 

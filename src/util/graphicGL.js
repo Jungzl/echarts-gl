@@ -1,51 +1,41 @@
-import Mesh from 'claygl/src/Mesh';
-import Renderer from 'claygl/src/Renderer';
-import Texture2D from 'claygl/src/Texture2D';
-import Texture from 'claygl/src/Texture';
-import Shader from 'claygl/src/Shader';
-import Material from 'claygl/src/Material';
-import Node3D from 'claygl/src/Node';
-import Geometry from 'claygl/src/Geometry';
+import {Mesh} from 'claygl';
+import {Renderer} from 'claygl';
+import {Texture2D} from 'claygl';
+import {Texture} from 'claygl';
+import {Shader} from 'claygl';
+import {Material} from 'claygl';
+import {Node} from 'claygl';
+import {Geometry} from 'claygl';
 import * as echarts from 'echarts/lib/echarts';
-import Scene from 'claygl/src/Scene';
-import LRUCache from 'zrender/lib/core/LRU';
-import textureUtil from 'claygl/src/util/texture';
-import EChartsSurface from './EChartsSurface';
-import AmbientCubemapLight from 'claygl/src/light/AmbientCubemap';
-import AmbientSHLight from 'claygl/src/light/AmbientSH';
-import shUtil from 'claygl/src/util/sh';
-import retrieve from './retrieve';
+import {Scene} from 'claygl';
+import LRUCache from 'zrender/lib/core/LRU.js';
+import {util} from 'claygl';
+import EChartsSurface from './EChartsSurface.js';
+import {light} from 'claygl';
+import retrieve from './retrieve.js';
 
-import SphereGeometry from 'claygl/src/geometry/Sphere';
-import PlaneGeometry from 'claygl/src/geometry/Plane';
-import CubeGeometry from 'claygl/src/geometry/Cube';
+import {geometry} from 'claygl';
 
-import AmbientLight from 'claygl/src/light/Ambient';
-import DirectionalLight from 'claygl/src/light/Directional';
-import PointLight from 'claygl/src/light/Point';
-import SpotLight from 'claygl/src/light/Spot';
-
-import PerspectiveCamera from 'claygl/src/camera/Perspective';
-import OrthographicCamera from 'claygl/src/camera/Orthographic';
+import {camera} from 'claygl';
 
 // Math
-import Vector2 from 'claygl/src/math/Vector2';
-import Vector3 from 'claygl/src/math/Vector3';
-import Vector4 from 'claygl/src/math/Vector4';
+import {Vector2} from 'claygl';
+import {Vector3} from 'claygl';
+import {Vector4} from 'claygl';
 
-import Quaternion from 'claygl/src/math/Quaternion';
+import {Quaternion} from 'claygl';
 
-import Matrix2 from 'claygl/src/math/Matrix2';
-import Matrix2d from 'claygl/src/math/Matrix2d';
-import Matrix3 from 'claygl/src/math/Matrix3';
-import Matrix4 from 'claygl/src/math/Matrix4';
+import {Matrix2} from 'claygl';
+import {Matrix2d} from 'claygl';
+import {Matrix3} from 'claygl';
+import {Matrix4} from 'claygl';
 
-import Plane from 'claygl/src/math/Plane';
-import Ray from 'claygl/src/math/Ray';
-import BoundingBox from 'claygl/src/math/BoundingBox';
-import Frustum from 'claygl/src/math/Frustum';
+import {Plane} from 'claygl';
+import {Ray} from 'claygl';
+import {BoundingBox} from 'claygl';
+import {Frustum} from 'claygl';
 
-import animatableMixin from './animatableMixin';
+import animatableMixin from './animatableMixin.js';
 // Some common shaders
 
 import utilGLSL from 'claygl/src/shader/source/util.glsl.js';
@@ -57,7 +47,7 @@ import realisticGLSL from './shader/realistic.glsl.js';
 import hatchingGLSL from './shader/hatching.glsl.js';
 import shadowGLSL from './shader/shadow.glsl.js';
 
-Object.assign(Node3D.prototype, animatableMixin);
+Object.assign(Node.prototype, animatableMixin);
 
 Shader.import(utilGLSL);
 Shader.import(prezGLSL);
@@ -145,7 +135,7 @@ var graphicGL = {};
 
 graphicGL.Renderer = Renderer;
 
-graphicGL.Node = Node3D;
+graphicGL.Node = Node;
 
 graphicGL.Mesh = Mesh;
 
@@ -159,19 +149,19 @@ graphicGL.Texture2D = Texture2D;
 
 // Geometries
 graphicGL.Geometry = Geometry;
-graphicGL.SphereGeometry = SphereGeometry;
-graphicGL.PlaneGeometry = PlaneGeometry;
-graphicGL.CubeGeometry = CubeGeometry;
+graphicGL.SphereGeometry = geometry.Sphere;
+graphicGL.PlaneGeometry = geometry.Plane;
+graphicGL.CubeGeometry = geometry.Cube;
 
 // Lights
-graphicGL.AmbientLight = AmbientLight;
-graphicGL.DirectionalLight = DirectionalLight;
-graphicGL.PointLight = PointLight;
-graphicGL.SpotLight = SpotLight;
+graphicGL.AmbientLight = light.Ambient;
+graphicGL.DirectionalLight = light.Directional;
+graphicGL.PointLight = light.Point;
+graphicGL.SpotLight = light.Spot;
 
 // Cameras
-graphicGL.PerspectiveCamera = PerspectiveCamera;
-graphicGL.OrthographicCamera = OrthographicCamera;
+graphicGL.PerspectiveCamera = camera.Perspective;
+graphicGL.OrthographicCamera = camera.Orthographic;
 
 // Math
 graphicGL.Vector2 = Vector2;
@@ -197,7 +187,7 @@ function getBlankImage() {
     if (blankImage !== null) {
         return blankImage;
     }
-    blankImage = textureUtil.createBlank('rgba(255,255,255,0)').image;
+    blankImage = util.texture.createBlank('rgba(255,255,255,0)').image;
     return blankImage;
 }
 
@@ -308,7 +298,7 @@ graphicGL.loadTexture = function (imgValue, api, textureOpts, cb) {
                 textureObj = {
                     callbacks: [cb]
                 };
-                var texture = textureUtil.loadTexture(imgValue, {
+                var texture = util.texture.loadTexture(imgValue, {
                     exposure: textureOpts.exposure,
                     fileType: 'hdr'
                 }, function () {
@@ -366,10 +356,10 @@ graphicGL.createAmbientCubemap = function (opt, renderer, api, cb) {
     var textureUrl = opt.texture;
     var exposure = retrieve.firstNotNull(opt.exposure, 1.0);
 
-    var ambientCubemap = new AmbientCubemapLight({
+    var ambientCubemap = new light.AmbientCubemap({
         intensity: retrieve.firstNotNull(opt.specularIntensity, 1.0)
     });
-    var ambientSH = new AmbientSHLight({
+    var ambientSH = new light.AmbientSH({
         intensity: retrieve.firstNotNull(opt.diffuseIntensity, 1.0),
         coefficients: [0.844, 0.712, 0.691, -0.037, 0.083, 0.167, 0.343, 0.288, 0.299, -0.041, -0.021, -0.009, -0.003, -0.041, -0.064, -0.011, -0.007, -0.004, -0.031, 0.034, 0.081, -0.060, -0.049, -0.060, 0.046, 0.056, 0.050]
     });
@@ -388,7 +378,7 @@ graphicGL.createAmbientCubemap = function (opt, renderer, api, cb) {
             var dTime = Date.now() - time;
             console.log('Prefilter environment map: ' + dTime + 'ms');
         }
-        ambientSH.coefficients = shUtil.projectEnvironmentMap(renderer, ambientCubemap.cubemap, {
+        ambientSH.coefficients = util.sh.projectEnvironmentMap(renderer, ambientCubemap.cubemap, {
             lod: 1
         });
 
@@ -406,7 +396,7 @@ graphicGL.createAmbientCubemap = function (opt, renderer, api, cb) {
 /**
  * Create a blank texture for placeholder
  */
-graphicGL.createBlankTexture = textureUtil.createBlank;
+graphicGL.createBlankTexture = util.texture.createBlank;
 
 /**
  * If value is image

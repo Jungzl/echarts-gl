@@ -1,6 +1,6 @@
 import * as echarts from 'echarts/lib/echarts';
-import formatTooltip from '../common/formatTooltip';
-import createList from '../common/createList';
+import formatTooltip from '../common/formatTooltip.js';
+import createList from '../common/createList.js';
 
 var Line3DSeries = echarts.SeriesModel.extend({
 

@@ -1,12 +1,12 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import spriteUtil from '../../util/sprite';
-import PointsMesh from './PointsMesh';
-import LabelsBuilder from '../../component/common/LabelsBuilder';
-import Matrix4 from 'claygl/src/math/Matrix4';
-import retrieve from '../../util/retrieve';
-import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual';
-import { getVisualColor, getVisualOpacity } from '../../util/visual';
+import graphicGL from '../../util/graphicGL.js';
+import spriteUtil from '../../util/sprite.js';
+import PointsMesh from './PointsMesh.js';
+import LabelsBuilder from '../../component/common/LabelsBuilder.js';
+import {Matrix4} from 'claygl';
+import retrieve from '../../util/retrieve.js';
+import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
+import { getVisualColor, getVisualOpacity } from '../../util/visual.js';
 
 var SDF_RANGE = 20;
 

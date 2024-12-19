@@ -1,9 +1,9 @@
-import Globe from './globe/Globe';
+import Globe from './globe/Globe.js';
 import * as echarts from 'echarts/lib/echarts';
-import {getLayoutRect} from 'echarts/lib/util/layout';
-import ViewGL from '../core/ViewGL';
-import retrieve from '../util/retrieve';
-import graphicGL from '../util/graphicGL';
+import {getLayoutRect} from 'echarts/lib/util/layout.js';
+import ViewGL from '../core/ViewGL.js';
+import retrieve from '../util/retrieve.js';
+import graphicGL from '../util/graphicGL.js';
 
 function getDisplacementData(img, displacementScale) {
     var canvas = document.createElement('canvas');

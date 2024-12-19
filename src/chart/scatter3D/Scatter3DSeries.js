@@ -1,7 +1,7 @@
 import * as echarts from 'echarts/lib/echarts';
-import formatUtil from '../../util/format';
-import formatTooltip from '../common/formatTooltip';
-import createList from '../common/createList';
+import formatUtil from '../../util/format.js';
+import formatTooltip from '../common/formatTooltip.js';
+import createList from '../common/createList.js';
 
 export default echarts.SeriesModel.extend({
 

@@ -1,5 +1,5 @@
-import glmatrix from 'claygl/src/dep/glmatrix';
-var vec3 = glmatrix.vec3;
+import {dep} from 'claygl';
+var vec3 = dep.glmatrix.vec3;
 
 
 function Globe(radius) {

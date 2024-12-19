@@ -6,9 +6,9 @@
  * @author Yi Shen(http://github.com/pissang)
  */
 
-import Geometry from 'claygl/src/Geometry';
-import glmatrix from 'claygl/src/dep/glmatrix';
-var vec3 = glmatrix.vec3;
+import {Geometry} from 'claygl';
+import {dep} from 'claygl';
+var vec3 = dep.glmatrix.vec3;
 
 /**
  * @constructor

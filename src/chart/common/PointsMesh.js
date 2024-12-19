@@ -1,8 +1,8 @@
-import graphicGL from '../../util/graphicGL';
-import verticesSortMixin from '../../util/geometry/verticesSortMixin';
+import graphicGL from '../../util/graphicGL.js';
+import verticesSortMixin from '../../util/geometry/verticesSortMixin.js';
 import * as echarts from 'echarts/lib/echarts';
-import glmatrix from 'claygl/src/dep/glmatrix';
-var vec4 = glmatrix.vec4;
+import {dep} from 'claygl';
+var vec4 = dep.glmatrix.vec4;
 
 import sdfSpriteGLSL from './sdfSprite.glsl.js';
 graphicGL.Shader.import(sdfSpriteGLSL);

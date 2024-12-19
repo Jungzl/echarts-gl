@@ -1,8 +1,8 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
-import SurfaceSeries from './SurfaceSeries';
-import SurfaceView from './SurfaceView';
+import SurfaceSeries from './SurfaceSeries.js';
+import SurfaceView from './SurfaceView.js';
 
 export function install(registers) {
     registers.registerChartView(SurfaceView);

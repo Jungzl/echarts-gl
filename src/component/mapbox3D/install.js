@@ -1,9 +1,9 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
-import Mapbox3DModel from './Mapbox3DModel';
-import Mapbox3DView from './Mapbox3DView';
-import mapbox3DCreator from '../../coord/mapbox3DCreator';
+import Mapbox3DModel from './Mapbox3DModel.js';
+import Mapbox3DView from './Mapbox3DView.js';
+import mapbox3DCreator from '../../coord/mapbox3DCreator.js';
 
 export function install(registers) {
     registers.registerComponentModel(Mapbox3DModel);

@@ -1,9 +1,9 @@
 import * as echarts from 'echarts/lib/echarts';
 
-import graphicGL from '../../util/graphicGL';
-import OrbitControl from '../../util/OrbitControl';
-import SceneHelper from '../../component/common/SceneHelper';
-import Geo3DBuilder from '../../component/common/Geo3DBuilder';
+import graphicGL from '../../util/graphicGL.js';
+import OrbitControl from '../../util/OrbitControl.js';
+import SceneHelper from '../../component/common/SceneHelper.js';
+import Geo3DBuilder from '../../component/common/Geo3DBuilder.js';
 
 export default echarts.ChartView.extend({
 

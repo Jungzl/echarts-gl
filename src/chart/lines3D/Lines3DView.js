@@ -1,9 +1,9 @@
 import * as echarts from 'echarts/lib/echarts';
-import graphicGL from '../../util/graphicGL';
-import LinesGeometry from '../../util/geometry/Lines3D';
+import graphicGL from '../../util/graphicGL.js';
+import LinesGeometry from '../../util/geometry/Lines3D.js';
 // import TrailMesh from './TrailMesh';
-import TrailMesh2 from './TrailMesh2';
-import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual';
+import TrailMesh2 from './TrailMesh2.js';
+import { getItemVisualColor, getItemVisualOpacity } from '../../util/visual.js';
 
 import lines3DGLSL from '../../util/shader/lines3D.glsl.js';
 graphicGL.Shader.import(lines3DGLSL);

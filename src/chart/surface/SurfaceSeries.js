@@ -1,7 +1,7 @@
 import * as echarts from 'echarts/lib/echarts';
-import componentShadingMixin from '../../component/common/componentShadingMixin';
-import formatTooltip from '../common/formatTooltip';
-import createList from '../common/createList';
+import componentShadingMixin from '../../component/common/componentShadingMixin.js';
+import formatTooltip from '../common/formatTooltip.js';
+import createList from '../common/createList.js';
 
 var SurfaceSeries = echarts.SeriesModel.extend({
 

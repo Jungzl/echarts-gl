@@ -1,8 +1,8 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
-import Line3DSeries from './Line3DSeries';
-import Line3DView from './Line3DView';
+import Line3DSeries from './Line3DSeries.js';
+import Line3DView from './Line3DView.js';
 
 export function install(registers) {
     registers.registerChartView(Line3DView);

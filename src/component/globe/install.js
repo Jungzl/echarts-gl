@@ -1,9 +1,9 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
-import GlobeModel from './GlobeModel';
-import GlobeView from './GlobeView';
-import globeCreator from '../../coord/globeCreator';
+import GlobeModel from './GlobeModel.js';
+import GlobeView from './GlobeView.js';
+import globeCreator from '../../coord/globeCreator.js';
 
 export function install(registers) {
     registers.registerComponentModel(GlobeModel);

@@ -1,10 +1,10 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
-import Map3DSeries from './Map3DSeries';
-import Map3DView from './Map3DView';
+import Map3DSeries from './Map3DSeries.js';
+import Map3DView from './Map3DView.js';
 
-import {install as installGeo3D} from '../../component/geo3D/install';
+import {install as installGeo3D} from '../../component/geo3D/install.js';
 
 export function install(registers) {
     // Depends on geo3d

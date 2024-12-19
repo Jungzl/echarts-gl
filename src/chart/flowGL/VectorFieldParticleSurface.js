@@ -1,15 +1,15 @@
-import Pass from 'claygl/src/compositor/Pass';
-import Geometry from 'claygl/src/Geometry';
-import Mesh from 'claygl/src/Mesh';
-import Material from 'claygl/src/Material';
-import Shader from 'claygl/src/Shader';
-import Texture2D from 'claygl/src/Texture2D';
-import Texture from 'claygl/src/Texture';
-import OrthoCamera from 'claygl/src/camera/Orthographic';
-import PlaneGeometry from 'claygl/src/geometry/Plane';
+import {compositor} from 'claygl';
+import {Geometry} from 'claygl';
+import {Mesh} from 'claygl';
+import {Material} from 'claygl';
+import {Shader} from 'claygl';
+import {Texture2D} from 'claygl';
+import {Texture} from 'claygl';
+import {camera} from 'claygl';
+import {geometry} from 'claygl';
 
-import FrameBuffer from 'claygl/src/FrameBuffer';
-import Line2DGeometry from './Line2D';
+import {FrameBuffer} from 'claygl';
+import Line2DGeometry from './Line2D.js';
 // import TemporalSS from '../../effect/TemporalSuperSampling';
 
 import vectorFieldParticleGLSL from './vectorFieldParticle.glsl.js';
@@ -122,13 +122,13 @@ VectorFieldParticleSurface.prototype = {
         this._frameBuffer = new FrameBuffer({
             depthBuffer: false
         });
-        this._particlePass = new Pass({
+        this._particlePass = new compositor.Pass({
             fragment: Shader.source('ecgl.vfParticle.particle.fragment')
         });
         this._particlePass.setUniform('velocityTexture', this.vectorFieldTexture);
         this._particlePass.setUniform('spawnTexture', this._spawnTexture);
 
-        this._downsamplePass = new Pass({
+        this._downsamplePass = new compositor.Pass({
             fragment: Shader.source('clay.compositor.downsample')
         });
 
@@ -168,7 +168,7 @@ VectorFieldParticleSurface.prototype = {
                 // DO NOT BLEND Blend will multiply alpha
                 // transparent: true
             }),
-            geometry: new PlaneGeometry()
+            geometry: new geometry.Plane()
         });
         lastFrameFullQuad.material.enableTexture('diffuseMap');
 
@@ -176,7 +176,7 @@ VectorFieldParticleSurface.prototype = {
         this._particleLinesMesh = particleLinesMesh;
         this._lastFrameFullQuadMesh = lastFrameFullQuad;
 
-        this._camera = new OrthoCamera();
+        this._camera = new camera.Orthographic();
         this._thisFrameTexture = new Texture2D();
         this._lastFrameTexture = new Texture2D();
     },

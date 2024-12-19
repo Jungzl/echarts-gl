@@ -1,6 +1,6 @@
 import * as echarts from 'echarts/lib/echarts';
-import Geo3DBuilder from '../../component/common/Geo3DBuilder';
-import graphicGL from '../../util/graphicGL';
+import Geo3DBuilder from '../../component/common/Geo3DBuilder.js';
+import graphicGL from '../../util/graphicGL.js';
 
 export default echarts.ChartView.extend({
 

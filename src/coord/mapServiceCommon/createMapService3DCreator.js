@@ -1,6 +1,6 @@
-import retrieve from '../../util/retrieve';
-import graphicGL from '../../util/graphicGL';
-import ViewGL from '../../core/ViewGL';
+import retrieve from '../../util/retrieve.js';
+import graphicGL from '../../util/graphicGL.js';
+import ViewGL from '../../core/ViewGL.js';
 
 export default function (serviceComponentType, ServiceCtor, afterCreate) {
 

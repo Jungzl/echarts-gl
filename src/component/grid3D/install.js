@@ -1,11 +1,11 @@
 // TODO ECharts GL must be imported whatever component,charts is imported.
-import '../../echarts-gl';
+import '../../echarts-gl.js';
 
-import Grid3DModel from './Grid3DModel';
-import Grid3DView from './Grid3DView';
-import grid3DCreator from '../../coord/grid3DCreator';
-import Axis3DModel from './Axis3DModel';
-import createAxis3DModel from './createAxis3DModel';
+import Grid3DModel from './Grid3DModel.js';
+import Grid3DView from './Grid3DView.js';
+import grid3DCreator from '../../coord/grid3DCreator.js';
+import Axis3DModel from './Axis3DModel.js';
+import createAxis3DModel from './createAxis3DModel.js';
 
 
 function getAxisType(axisDim, option) {
