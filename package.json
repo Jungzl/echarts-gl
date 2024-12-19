@@ -1,7 +1,7 @@
 {
   "name": "@jungzl/echarts-gl",
   "description": "Extension pack of ECharts providing 3D plots and globe visualization",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "maintainers": [
     {
       "name": "Jungzl"
@@ -15,10 +15,13 @@
   "type": "module",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "build": "node scripts/build.js && rspack -m development && rspack -m production",
+    "build:glsl": "node scripts/build.js",
+    "build:lib": "babel src -d lib",
+    "build": "pnpm run build:glsl && rspack -m development && rspack -m production",
     "dev": "rspack -m development -w",
-    "prepare": "node scripts/build.js && babel src -d lib",
-    "release": "pnpm run prepare && pnpm run build"
+    "prepare": "pnpm run build:glsl && pnpm run build:lib",
+    "release": "pnpm run prepare && pnpm run build",
+    "bumpNRelease": "bumpp"
   },
   "files": [
     "dist",
@@ -54,6 +57,7 @@
     "@rspack/cli": "^1.1.6",
     "@rspack/core": "^1.1.6",
     "benchmark": "^2.1.3",
+    "bumpp": "^9.9.1",
     "echarts": "^5.1.2",
     "fs-extra": "^4.0.2",
     "glob": "^7.1.1",
